@@ -1,0 +1,9 @@
+# Archivos temporales de Visual Studio
+.vs/
+bin/
+obj/
+
+# Base de datos local
+*.db
+*.db-shm
+*.db-wal
