@@ -54,7 +54,7 @@ namespace DawerBook.Controllers
 
         // MOSTRAR FORMULARIO DE EDICIÓN
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Editar(int id)
         {
             // Busca el libro por su ID
             var libro = await _context.Libros.FindAsync(id);
@@ -69,7 +69,7 @@ namespace DawerBook.Controllers
 
         // GUARDAR CAMBIOS
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Libros libro)
+        public async Task<IActionResult> Editar(int id, Libros libro)
         {
             if (!ModelState.IsValid)
             {

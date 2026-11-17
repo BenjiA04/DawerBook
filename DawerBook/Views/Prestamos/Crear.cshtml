@@ -1,5 +1,110 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model DawerBook.Models.ViewModels.CrearPrestamoViewModel
+@using DawerBook.Models
+@using Microsoft.AspNetCore.Mvc.Rendering
+
 @{
+    ViewData["Title"] = "Registrar Préstamo";
+
+    var usuarios = (IEnumerable<Usuarios>)ViewBag.Usuarios;
+    var libros = (IEnumerable<Libros>)ViewBag.Libros;
 }
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - DawerBook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f6f8fb;
+            color: #1b2a41;
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid #e3e8ef;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .btn-primary {
+            background: #0b3d91;
+            border-color: #0b3d91;
+        }
+
+        .lista-libros {
+            max-height: 260px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: .5rem .75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+
+        <h1 class="h3 fw-bold mb-4">Gestión de Préstamos</h1>
+
+        <div class="panel">
+            <h2 class="h5 fw-bold mb-0">Registrar Préstamo</h2>
+            <p class="text-muted mb-4">Realiza un nuevo préstamo de uno o varios libros.</p>
+
+            <form asp-action="Crear" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="UsuarioId" class="form-label fw-semibold">Usuario</label>
+                        <select asp-for="UsuarioId" class="form-select"
+                                asp-items="@(usuarios.Select(u => new SelectListItem($"{u.Nombre} ({u.Carnet})", u.Id.ToString())))">
+                            <option value="0">Seleccione un usuario...</option>
+                        </select>
+                        <span asp-validation-for="UsuarioId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="FechaPrestamo" class="form-label fw-semibold">Fecha de préstamo</label>
+                        <input asp-for="FechaPrestamo" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+                        <span asp-validation-for="FechaPrestamo" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="FechaDevolucion" class="form-label fw-semibold">Fecha de devolución</label>
+                        <input asp-for="FechaDevolucion" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+                        <span asp-validation-for="FechaDevolucion" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Libros disponibles</label>
+                        <div class="lista-libros">
+                            @foreach (var l in libros)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="LibrosIds" value="@l.Id"
+                                           id="libro-@l.Id" checked="@Model.LibrosIds.Contains(l.Id)" />
+                                    <label class="form-check-label" for="libro-@l.Id">
+                                        @l.Titulo <span class="text-muted">— @l.Autor (@l.Cantidad disp.)</span>
+                                    </label>
+                                </div>
+                            }
+                            @if (!libros.Any())
+                            {
+                                <span class="text-muted">No hay libros disponibles.</span>
+                            }
+                        </div>
+                        <span asp-validation-for="LibrosIds" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Registrar préstamo</button>
+                    <a asp-action="Index" class="btn btn-light border">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

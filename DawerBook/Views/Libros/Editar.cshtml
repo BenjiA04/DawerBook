@@ -1,5 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Libros
+
 @{
+    ViewData["Title"] = "Editar libro";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-xl-6">
+
+        <div class="mb-4">
+            <h1 class="h3 fw-bold mb-1">Editar libro</h1>
+            <p class="text-muted mb-0">DawerBook &middot; Modifica los datos del libro #@Model.Id</p>
+        </div>
+
+        <div class="card border-0 shadow-sm" style="border-radius: 1rem;">
+            <div class="card-body p-4">
+
+                <form asp-controller="Libros" asp-action="Editar" asp-route-id="@Model.Id" method="post" novalidate>
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Titulo" class="form-label fw-semibold">Título</label>
+                        <input asp-for="Titulo" class="form-control" />
+                        <span asp-validation-for="Titulo" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Autor" class="form-label fw-semibold">Autor</label>
+                        <input asp-for="Autor" class="form-control" />
+                        <span asp-validation-for="Autor" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Genero" class="form-label fw-semibold">Género</label>
+                        <input asp-for="Genero" class="form-control" />
+                        <span asp-validation-for="Genero" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <label asp-for="Cantidad" class="form-label fw-semibold">Cantidad</label>
+                            <input asp-for="Cantidad" class="form-control" min="0" />
+                            <span asp-validation-for="Cantidad" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <label asp-for="Estado" class="form-label fw-semibold">Estado</label>
+                            <input asp-for="Estado" class="form-control" />
+                            <span asp-validation-for="Estado" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-2">
+                        <a asp-controller="Libros" asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

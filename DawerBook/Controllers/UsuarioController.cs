@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DawerBook.Controllers
 {
-    public class UsuarioController : Controller
+    public class UsuariosController : Controller
     {
         private readonly MyDbContext _context;
 
-        public UsuarioController(MyDbContext context)
+        public UsuariosController(MyDbContext context)
         {
             _context = context;
         }
 
         // CONSULTAR Y BUSCAR USUARIOS
         [HttpGet]
-        public async Task<IActionResult> Consultar(string? buscar)
+        public async Task<IActionResult> Index(string? buscar)
         {
             // Prepara la consulta
             var usuarios = _context.Usuarios.AsQueryable();
@@ -29,14 +29,14 @@ namespace DawerBook.Controllers
 
         // MOSTRAR FORMULARIO DE REGISTRO
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Crear()
         {
             return View();
         }
 
         // REGISTRAR USUARIO
         [HttpPost]
-        public async Task<IActionResult> Create(Usuarios usuario)
+        public async Task<IActionResult> Crear(Usuarios usuario)
         {
             // Comprueba las validaciones del modelo
             if (!ModelState.IsValid)
@@ -50,12 +50,12 @@ namespace DawerBook.Controllers
             // Guarda en la base de datos
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Consultar));
+            return RedirectToAction(nameof(Index));
         }
 
         // MOSTRAR FORMULARIO DE EDICIÓN
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Editar(int id)
         {
             // Busca el usuario por su ID
             var usuario = await _context.Usuarios.FindAsync(id);
@@ -70,7 +70,7 @@ namespace DawerBook.Controllers
 
         // GUARDAR CAMBIOS DEL USUARIO
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Usuarios datos)
+        public async Task<IActionResult> Editar(int id, Usuarios datos)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace DawerBook.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Consultar));
+            return RedirectToAction(nameof(Index));
         }
 
         // ELIMINAR USUARIO
@@ -113,7 +113,7 @@ namespace DawerBook.Controllers
             {
                 TempData["Error"] = "No se puede eliminar un usuario con historial de préstamos.";
 
-                return RedirectToAction(nameof(Consultar));
+                return RedirectToAction(nameof(Index));
             }
 
             // Elimina el usuario
@@ -121,7 +121,7 @@ namespace DawerBook.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Consultar));
+            return RedirectToAction(nameof(Index));
         }
     }
 }

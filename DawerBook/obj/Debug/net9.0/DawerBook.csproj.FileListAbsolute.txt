@@ -213,10 +213,10 @@ C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.b
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.csproj.Up2Date
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.dll
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\refint\DawerBook.dll
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.pdb
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.genruntimeconfig.cache
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\ref\DawerBook.dll
+C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.sourcelink.json
