@@ -46,6 +46,11 @@ namespace DawerBook.Controllers
                 return View(libro);
             }
 
+            if (libro.Cantidad == 0)
+            {
+                TempData["Error"] = "No puedes agregar un libro en 0.";
+            }
+
             _context.Libros.Add(libro);
             await _context.SaveChangesAsync();
 

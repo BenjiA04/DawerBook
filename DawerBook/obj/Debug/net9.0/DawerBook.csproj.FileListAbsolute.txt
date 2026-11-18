@@ -220,3 +220,4 @@ C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.pdb
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.genruntimeconfig.cache
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\ref\DawerBook.dll
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.sourcelink.json
+C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
