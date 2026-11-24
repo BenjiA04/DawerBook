@@ -44,6 +44,8 @@ namespace DawerBook.Controllers
                 return View(usuario);
             }
 
+            usuario.Nombre = usuario.Nombre.Trim().ToUpper();
+
             // Agrega el usuario
             _context.Usuarios.Add(usuario);
 
@@ -78,15 +80,18 @@ namespace DawerBook.Controllers
             }
 
             // Busca el usuario original
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuarioBuscado = await _context.Usuarios.FindAsync(id);
 
-            if (usuario == null)
+            if (usuarioBuscado == null)
             {
                 return NotFound();
             }
 
             // Aquí actualizaremos las propiedades permitidas
             // cuando confirmemos el modelo Usuarios.
+            usuarioBuscado.Nombre = datos.Nombre.Trim().ToUpper();
+            usuarioBuscado.Correo = datos.Correo;
+            usuarioBuscado.Carnet = datos.Carnet;
 
             await _context.SaveChangesAsync();
 

@@ -109,7 +109,7 @@ namespace DawerBook.Controllers
                 UsuarioId = datos.UsuarioId,
                 Fecha_Prestamo = datos.FechaPrestamo,
                 Fecha_Devolucion = datos.FechaDevolucion,
-                Estado = "Activo"
+                Estado = "ACTIVO"
             };
 
             // Crea un detalle por cada libro seleccionado
@@ -126,8 +126,8 @@ namespace DawerBook.Controllers
 
                 // Actualiza el estado según la disponibilidad
                 libro.Estado = libro.Cantidad > 0
-                    ? "Disponible"
-                    : "No disponible";
+                    ? "DISPONIBLE"
+                    : "NO DISPONIBLE";
             }
 
             // Guarda el préstamo y sus detalles
@@ -179,12 +179,12 @@ namespace DawerBook.Controllers
                     libro.Cantidad++;
 
                     // Actualiza su estado
-                    libro.Estado = "Disponible";
+                    libro.Estado = "DISPONIBLE";
                 }
             }
 
             // Actualiza el estado del préstamo
-            prestamo.Estado = "Devuelto";
+            prestamo.Estado = "DEVUELTO";
 
             await _context.SaveChangesAsync();
 

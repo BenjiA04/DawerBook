@@ -145,7 +145,6 @@ C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\rjsmcshtml.dswa.c
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\scopedcss\bundle\DawerBook.styles.css
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\scopedcss\projectbundle\DawerBook.bundle.scp.css
-C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\compressed\a40oh48y52-b9sayid5wm.gz
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\compressed\o0qc06hxfe-61n19gt1b8.gz
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\compressed\ozrh7cjbcw-xtxxf3hu2r.gz
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\compressed\m289n5zdvi-bqjiyaj88i.gz
@@ -221,3 +220,4 @@ C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.genrunt
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\ref\DawerBook.dll
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\DawerBook.sourcelink.json
 C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Benjamin\Desktop\DawerBook\DawerBook\obj\Debug\net9.0\compressed\a40oh48y52-kcmxhksbmw.gz

@@ -46,7 +46,10 @@
 
                         <div class="col-sm-6 mb-3">
                             <label asp-for="Estado" class="form-label fw-semibold">Estado</label>
-                            <input asp-for="Estado" class="form-control" />
+                            <select asp-for="Estado" class="form-control">
+                                <option value="DISPONIBLE">DISPONIBLE</option>
+                                <option value="NO DISPONIBLE">NO DISPONIBLE</option>
+                            </select>
                             <span asp-validation-for="Estado" class="text-danger small"></span>
                         </div>
                     </div>

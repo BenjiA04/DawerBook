@@ -23,7 +23,7 @@ namespace DawerBook.Controllers
             // Filtra por título si hay una búsqueda
             if (!string.IsNullOrWhiteSpace(buscar))
             {
-                libros = libros.Where(l => l.Titulo.Contains(buscar));
+                libros = libros.Where(l => l.Titulo.Contains(buscar.ToUpper()));
             }
 
             // Ejecuta la consulta y envía los resultados a la vista
@@ -46,10 +46,16 @@ namespace DawerBook.Controllers
                 return View(libro);
             }
 
-            if (libro.Cantidad == 0)
+            if (libro.Cantidad <= 0)
             {
-                TempData["Error"] = "No puedes agregar un libro en 0.";
+                ModelState.AddModelError("Cantidad", "No puedes agregar un libro en 0.");
+                return View(libro);
             }
+
+            // Eliminar espacios innecesarios y colocar en mayusculas
+            libro.Titulo = libro.Titulo.Trim().ToUpper();
+            libro.Autor = libro.Autor.Trim().ToUpper();
+            libro.Genero = libro.Genero.Trim().ToUpper();
 
             _context.Libros.Add(libro);
             await _context.SaveChangesAsync();
@@ -90,9 +96,9 @@ namespace DawerBook.Controllers
             }
 
             // Actualiza sus propiedades
-            libroBuscado.Titulo = libro.Titulo;
-            libroBuscado.Autor = libro.Autor;
-            libroBuscado.Genero = libro.Genero;
+            libroBuscado.Titulo = libro.Titulo.Trim().ToUpper();
+            libroBuscado.Autor = libro.Autor.Trim().ToUpper();
+            libroBuscado.Genero = libro.Genero.Trim().ToUpper();
             libroBuscado.Cantidad = libro.Cantidad;
             libroBuscado.Estado = libro.Estado;
 
