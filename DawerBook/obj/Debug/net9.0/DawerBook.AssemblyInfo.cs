@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DawerBook")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8da84b8a99f3b7b54d1ac10609289cc4ade4224e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbedae692d0bae61fddb5eb6a94233bad36187f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DawerBook")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DawerBook")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

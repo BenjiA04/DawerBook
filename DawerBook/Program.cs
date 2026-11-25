@@ -1,5 +1,6 @@
 using DawerBook;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,17 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 var app = builder.Build();
 
+// Configura la autenticación mediante cookies
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index";
+    });
+
+// Habilita la autorización 
+builder.Services.AddAuthorization();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -26,6 +38,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+// Identifica al usuario mediante la cookie
+app.UseAuthentication();
+
+// Comprueba los permisos del usuario
 app.UseAuthorization();
 
 app.MapStaticAssets();

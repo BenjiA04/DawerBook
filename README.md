@@ -31,3 +31,19 @@ Sistema de gestión de biblioteca desarrollado en ASP.NET Core MVC.
 - Se incorporaron el controlador LoginController y la vista Login como estructura inicial para la futura implementación del sistema de autenticación.
 
 - Se incorporó el archivo README.md para documentar el proyecto y sus actualizaciones.
+
+- Se implementó la lógica de autenticación y autorización en el `LoginController`.
+
+- Se configuró la autenticación mediante cookies en `Program.cs`.
+
+- Se implementó la validación de credenciales contra la base de datos.
+
+- Se establecieron dos roles de acceso: Administrador y Vendedor.
+
+
+### Pendiente
+
+- Desarrollar la vista del Login.
+- Implementar el menú lateral en `_Layout.cshtml`.
+- Definir las restricciones de acceso para cada rol.
+- Desarrollar la pantalla principal (Dashboard).
