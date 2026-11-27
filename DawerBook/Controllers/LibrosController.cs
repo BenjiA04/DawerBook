@@ -1,4 +1,5 @@
-﻿using DawerBook.Models;
+using Microsoft.AspNetCore.Authorization;
+using DawerBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace DawerBook.Controllers
 
         // PARA BUSCAR LIBROS
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index(string? buscar)
         {
             // Prepara la consulta de libros
@@ -32,6 +34,7 @@ namespace DawerBook.Controllers
 
         // MOSTRAR FORMULARIO DE REGISTRO
         [HttpGet]
+        [Authorize]
         public IActionResult Crear()
         {
             return View();
@@ -39,6 +42,7 @@ namespace DawerBook.Controllers
 
         // GUARDAR LIBRO
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear(Libros libro)
         {
             if (!ModelState.IsValid)
@@ -57,14 +61,26 @@ namespace DawerBook.Controllers
             libro.Autor = libro.Autor.Trim().ToUpper();
             libro.Genero = libro.Genero.Trim().ToUpper();
 
+            // Buscar si hay un libro con ese mismo nombre
+            var buscarLibro = _context.Libros.Any(p => p.Titulo == libro.Titulo);
+            
+            if (buscarLibro)
+            {
+                ModelState.AddModelError("Titulo", "Este titulo ya esta registrado");
+                return View(libro);
+            }
+
             _context.Libros.Add(libro);
             await _context.SaveChangesAsync();
+
+            TempData["Exito"] = "Libro creado correctamente.";
 
             return RedirectToAction(nameof(Index));
         }
 
         // MOSTRAR FORMULARIO DE EDICIÓN
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Editar(int id)
         {
             // Busca el libro por su ID
@@ -80,6 +96,7 @@ namespace DawerBook.Controllers
 
         // GUARDAR CAMBIOS
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Editar(int id, Libros libro)
         {
             if (!ModelState.IsValid)
@@ -104,11 +121,14 @@ namespace DawerBook.Controllers
 
             await _context.SaveChangesAsync();
 
+            TempData["Exito"] = "Libro modificado correctamente.";
+
             return RedirectToAction(nameof(Index));
         }
 
         // PARA ELIMINAR LIBRO
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Eliminar(int id)
         {
             // Buscar el libro

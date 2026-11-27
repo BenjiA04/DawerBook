@@ -1,53 +1,74 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+@using System.Security.Claims
+@{
+    var nombre = User.Identity?.Name ?? ""; // Nombre y rol mediante Claims
+    var rol = User.FindFirst(ClaimTypes.Role)?.Value ?? "";
+    var controlador = ViewContext.RouteData.Values["controller"]?.ToString();
+    var historial = Context.Request.Query["historial"].ToString() == "true";
+    var inicial = nombre.Length > 0 ? nombre.Substring(0, 1).ToUpper() : "U";
+}
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DawerBook</title>
-    <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DawerBook.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DawerBook</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Libros" asp-action="Index">Libros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Prestamos" asp-action="Index">Prestamos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+<body class="dawer-layout">
+    <div class="estructura">
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <aside class="menu-lateral">
+                <a class="logo" asp-controller="Home" asp-action="Index">
+                    <svg width="28" height="26" viewBox="0 0 48 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M24 8 C17 2 8 3 3 5 V34 C11 31 18 32 24 38 C30 32 37 31 45 34 V5 C40 3 31 2 24 8 V38" /></svg>
+                    DawerBook
+                </a>
+                <nav aria-label="Menú principal">
+                    <a class="opcion @(controlador == "Home" ? "activo" : "")" asp-controller="Home" asp-action="Index"><span aria-hidden="true">⌂</span> Inicio</a>
+
+                    @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor"))
+                    {
+                        <a class="opcion @(controlador == "Libros" ? "activo" : "")" asp-controller="Libros" asp-action="Index"><span aria-hidden="true">▤</span> Libros</a>
+                    }
+
+                    @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor")) // Validacion del rol para mostrar opciones
+                    {
+                        <a class="opcion @(controlador == "Usuarios" ? "activo" : "")" asp-controller="Usuarios" asp-action="Index"><span aria-hidden="true">♟</span> Usuarios</a>
+                    }
+
+                    @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor"))
+                    {
+                        <a class="opcion @(controlador == "Prestamos" && !historial ? "activo" : "")" asp-controller="Prestamos" asp-action="Index"><span aria-hidden="true">⇄</span> Préstamos</a>
+                    }
+                </nav>
+
+                <!-- El controlador espera una petición POST con token. -->
+                <form asp-controller="Login" asp-action="CerrarSesion" method="post" class="salir">
+                    <button type="submit" class="opcion"><span aria-hidden="true">↪</span> Cerrar sesión</button>
+                </form>
+            </aside>
+        }
+
+        <div class="zona-principal">
+            <header class="barra-superior">
+                <strong>@(ViewData["Title"] ?? "DawerBook")</strong>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <div class="usuario">
+                        <span class="avatar">@inicial</span>
+                        <div><strong>@nombre</strong><small>@rol</small></div>
+                    </div>
+                }
+            </header>
+            <main class="contenido">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - DawerBook - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

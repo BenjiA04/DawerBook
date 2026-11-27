@@ -121,10 +121,13 @@
                                           class="d-inline"
                                           onsubmit="return confirm('¿Deseas eliminar este usuario?');">
 
+                                    @if (User.IsInRole("Administrador"))
+                                    {
                                         <button type="submit"
                                                 class="btn btn-sm btn-outline-danger">
                                             Eliminar
                                         </button>
+                                    }
                                     </form>
                                 </td>
                             </tr>

@@ -1,12 +1,10 @@
-﻿@model IEnumerable<Libros>
+@model IEnumerable<Libros>
 
 @{
-    ViewData["Title"] = "Libros";
+    ViewData["Title"] = "Gestion de Libros";
     var buscar = Context.Request.Query["buscar"].ToString();
     var total = Model.Count();
 }
-
-<link rel="stylesheet" href="~/css/estilos.css" />
 
 <!-- ENCABEZADO -->
 <div class="dawer-hero p-4 p-md-5 mb-4">
@@ -15,9 +13,9 @@
             <h1 class="display-6 fw-bold mb-1">DawerBook</h1>
             <p class="mb-0 opacity-75">Sistema de gestión de libros &middot; Listado de libros registrados</p>
         </div>
-        <a asp-controller="Libros" asp-action="Crear" class="btn btn-light fw-semibold">
-            + Nuevo libro
-        </a>
+            <a asp-controller="Libros" asp-action="Crear" class="btn btn-light fw-semibold">
+                + Nuevo libro
+            </a>
     </div>
 </div>
 
@@ -110,14 +108,17 @@
                                 </td>
                                 <td class="text-end text-nowrap">
                                     <a asp-controller="Libros" asp-action="Editar" asp-route-id="@libro.Id"
-                                       class="btn btn-sm btn-outline-primary">Editar</a>
+                                        class="btn btn-sm btn-outline-primary">Editar</a>
 
-                                    <form asp-controller="Libros" asp-action="Eliminar" asp-route-id="@libro.Id"
-                                          method="post" class="d-inline"
-                                          onsubmit="return confirm('¿Seguro que deseas eliminar este libro?');">
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
-                                    </form>
-                                </td>
+                                    @if (User.IsInRole("Administrador"))
+                                    {
+                                        <form asp-controller="Libros" asp-action="Eliminar" asp-route-id="@libro.Id"
+                                              method="post" class="d-inline"
+                                              onsubmit="return confirm('¿Seguro que deseas eliminar este libro?');">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                        </form>
+                                    }
+                                    </td>
                             </tr>
                         }
                     </tbody>

@@ -1,5 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión - DawerBook</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="login-pagina">
+        <div class="login-izquierda">
+            <div class="login-formulario">
+                <div class="marca">
+                    <svg width="52" height="45" viewBox="0 0 48 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M24 8 C17 2 8 3 3 5 V34 C11 31 18 32 24 38 C30 32 37 31 45 34 V5 C40 3 31 2 24 8 V38" />
+                    </svg>
+                    <h1>Dawer<span>Book</span></h1>
+                    <p>Sistema de Gestión de Biblioteca</p>
+                </div>
+
+                <h2>Iniciar sesión</h2>
+                <p class="text-muted">Ingresa tus credenciales para acceder al sistema</p>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+                }
+
+                <!-- Los nombres coinciden con los parámetros del controlador. -->
+                <form asp-controller="Login" asp-action="Index" method="post">
+                    <div class="mb-3">
+                        <label for="usuario" class="visually-hidden">Usuario</label>
+                        <div class="campo">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2z"/></svg>
+                            <input type="text" id="usuario" name="usuario" placeholder="Usuario" autocomplete="username" />
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contraseña" class="visually-hidden">Contraseña</label>
+                        <div class="campo">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4M12 14v4"/></svg>
+                            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" autocomplete="current-password" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn boton-ingresar w-100">Ingresar</button>
+                </form>
+            </div>
+        </div>
+        <div class="login-imagen" aria-hidden="true"></div>
+    </div>
+</body>
+</html>

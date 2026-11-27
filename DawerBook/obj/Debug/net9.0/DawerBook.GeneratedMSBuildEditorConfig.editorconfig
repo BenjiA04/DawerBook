@@ -17,73 +17,73 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DawerBook
 build_property.RootNamespace = DawerBook
-build_property.ProjectDir = C:\Users\Benjamin\Desktop\DawerBook\DawerBook\
+build_property.ProjectDir = C:\Users\Benjamin\Documents\Dr\DawerBook-master\DawerBook\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Benjamin\Desktop\DawerBook\DawerBook
+build_property.MSBuildProjectDirectory = C:\Users\Benjamin\Documents\Dr\DawerBook-master\DawerBook
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Home/Index.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Libros/Crear.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Libros/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXENyZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Libros/Editar.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Libros/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Libros/Index.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Libros/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Login/Index.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Prestamos/Crear.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Prestamos/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3RhbW9zXENyZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Prestamos/Index.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Prestamos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3RhbW9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Shared/Error.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Usuarios/Crear.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Usuarios/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Usuarios/Editar.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Usuarios/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Usuarios/Index.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/_ViewImports.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/_ViewStart.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin/Desktop/DawerBook/DawerBook/Views/Shared/_Layout.cshtml]
+[C:/Users/Benjamin/Documents/Dr/DawerBook-master/DawerBook/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s5oe8c1c32

@@ -1,4 +1,5 @@
-﻿using DawerBook.Models;
+using Microsoft.AspNetCore.Authorization;
+using DawerBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace DawerBook.Controllers
 
         // CONSULTAR Y BUSCAR USUARIOS
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index(string? buscar)
         {
             // Prepara la consulta
@@ -36,6 +38,7 @@ namespace DawerBook.Controllers
 
         // REGISTRAR USUARIO
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear(Usuarios usuario)
         {
             // Comprueba las validaciones del modelo
@@ -46,11 +49,22 @@ namespace DawerBook.Controllers
 
             usuario.Nombre = usuario.Nombre.Trim().ToUpper();
 
+            // Buscar si hay un usuario con ese mismo correo
+            var confirmarCorreoDuplicado = _context.Usuarios.Any(p => p.Correo == usuario.Correo);
+
+            if (confirmarCorreoDuplicado)
+            {
+                ModelState.AddModelError("Correo", "Ya existe un usuario con este correo registrado");
+                return View(usuario);
+            }
+
             // Agrega el usuario
             _context.Usuarios.Add(usuario);
 
             // Guarda en la base de datos
             await _context.SaveChangesAsync();
+
+            TempData["Exito"] = "Usuario creado correctamente.";
 
             return RedirectToAction(nameof(Index));
         }
@@ -95,11 +109,14 @@ namespace DawerBook.Controllers
 
             await _context.SaveChangesAsync();
 
+            TempData["Exito"] = "Usuario modificado correctamente.";
+
             return RedirectToAction(nameof(Index));
         }
 
         // ELIMINAR USUARIO
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Eliminar(int id)
         {
             // Busca el usuario
@@ -125,6 +142,8 @@ namespace DawerBook.Controllers
             _context.Usuarios.Remove(usuario);
 
             await _context.SaveChangesAsync();
+
+            TempData["Exito"] = "Usuario eliminado correctamente.";
 
             return RedirectToAction(nameof(Index));
         }

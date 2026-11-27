@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using DawerBook.Migrations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -26,6 +26,9 @@ namespace DawerBook.Controllers
         }
 
         // INICIAR SESIÓN
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(string usuario, string contraseña)
         {
             // Comprueba que se ingresaron los datos
@@ -48,12 +51,15 @@ namespace DawerBook.Controllers
                 return View();
             }
 
+            // La cuenta antigua de Bibliotecario corresponde al rol Vendedor.
+            var rol = cuenta.Rol == "Bibliotecario" ? "Vendedor" : cuenta.Rol;
+
             // Almacena los datos de identidad del usuario
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, cuenta.Id.ToString()),
                 new Claim(ClaimTypes.Name, cuenta.Username),
-                new Claim(ClaimTypes.Role, cuenta.Rol)
+                new Claim(ClaimTypes.Role, rol)
             };
 
             // Crea la identidad del usuario

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\DawerBook.csproj": {}
+    "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\DawerBook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\DawerBook.csproj": {
+    "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\DawerBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\DawerBook.csproj",
+        "projectUniqueName": "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\DawerBook.csproj",
         "projectName": "DawerBook",
-        "projectPath": "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\DawerBook.csproj",
+        "projectPath": "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\DawerBook.csproj",
         "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\obj\\",
+        "outputPath": "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

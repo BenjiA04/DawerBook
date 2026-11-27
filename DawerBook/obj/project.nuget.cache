@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eBAL1M3qrQc=",
+  "dgSpecHash": "OV9tHVTywyg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Benjamin\\Desktop\\DawerBook\\DawerBook\\DawerBook.csproj",
+  "projectFilePath": "C:\\Users\\Benjamin\\Documents\\Dr\\DawerBook-master\\DawerBook\\DawerBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Benjamin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Benjamin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

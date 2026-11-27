@@ -14,18 +14,19 @@ builder.Services.AddDbContext<MyDbContext>(options =>
     )
 );
 
-var app = builder.Build();
-
-// Configura la autenticación mediante cookies
+// Configura la autenticaciÃ³n mediante cookies
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Login/Index";
+        options.AccessDeniedPath = "/Home/AccesoDenegado";
     });
 
-// Habilita la autorización 
+// Habilita la autorizaciÃ³n 
 builder.Services.AddAuthorization();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

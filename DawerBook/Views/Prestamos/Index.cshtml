@@ -1,11 +1,9 @@
-﻿@model IEnumerable<DawerBook.Models.Prestamos>
+@model IEnumerable<DawerBook.Models.Prestamos>
 
 @{
-    ViewData["Title"] = "Gestión de Préstamos";
+    ViewData["Title"] = ViewBag.Historial == true ? "Historial" : "Gestión de Préstamos";
     var total = Model.Count();
 }
-
-<link rel="stylesheet" href="~/css/estilos.css" />
 
 <!-- ENCABEZADO -->
 <div class="dawer-hero p-4 p-md-5 mb-4">
@@ -77,7 +75,10 @@
                             <th class="text-center">Fecha de préstamo</th>
                             <th class="text-center">Fecha de devolución</th>
                             <th class="text-center">Estado</th>
-                            <th class="text-end">Acciones</th>
+                            @if (User.IsInRole("Administrador"))
+                            {
+                                 <th class="text-end">Acciones</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -113,7 +114,7 @@
                                 </td>
 
                                 <td class="text-center">
-                                    @if (p.Estado == "Activo")
+                                    @if (p.Estado == "ACTIVO")
                                     {
                                         <span class="badge text-bg-success">
                                             @p.Estado
@@ -127,22 +128,25 @@
                                     }
                                 </td>
 
-                                <td class="text-end text-nowrap">
-                                    @if (p.Estado == "Activo")
-                                    {
-                                        <form asp-action="Devolver"
-                                              asp-route-id="@p.Id"
-                                              method="post"
-                                              class="d-inline"
-                                              onsubmit="return confirm('¿Registrar la devolución de este préstamo?');">
+                                @if (User.IsInRole("Administrador"))
+                                {
+                                    <td class="text-end text-nowrap">
+                                        @if (p.Estado == "ACTIVO")
+                                        {
+                                            <form asp-action="Devolver"
+                                                  asp-route-id="@p.Id"
+                                                  method="post"
+                                                  class="d-inline"
+                                                  onsubmit="return confirm('¿Registrar la devolución de este préstamo?');">
 
-                                            <button type="submit"
-                                                    class="btn btn-sm btn-outline-primary">
-                                                Registrar devolución
-                                            </button>
-                                        </form>
-                                    }
-                                </td>
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-outline-primary">
+                                                    Registrar devolución
+                                                </button>
+                                            </form>
+                                        }
+                                    </td>
+                                }
                             </tr>
                         }
                     </tbody>

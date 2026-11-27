@@ -1,4 +1,5 @@
-﻿using DawerBook.Models;
+using Microsoft.AspNetCore.Authorization;
+using DawerBook.Models;
 using DawerBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,8 @@ namespace DawerBook.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        [Authorize]
+        public async Task<IActionResult> Index(bool historial = false)
         {
             // Consulta los préstamos con sus usuarios y libros
             var prestamos = await _context.Prestamos
@@ -24,11 +26,18 @@ namespace DawerBook.Controllers
                     .ThenInclude(d => d.Libro) // información de los libros de cada detalle
                 .ToListAsync();
 
+            if (historial)
+            {
+                prestamos = prestamos.Where(p => p.Estado == "DEVUELTO").ToList();
+            }
+
+            ViewBag.Historial = historial;
             return View(prestamos);
         }
 
         // MOSTRAR FORMULARIO DE REGISTRO
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Crear()
         {
             // Obtiene usuarios y libros para el formulario
@@ -43,6 +52,7 @@ namespace DawerBook.Controllers
 
         // REGISTRAR PRÉSTAMO
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Crear(CrearPrestamoViewModel datos)
         {
@@ -142,6 +152,7 @@ namespace DawerBook.Controllers
 
         // REGISTRAR DEVOLUCIÓN
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Devolver(int id)
         {
             // Busca el préstamo con sus detalles
